@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,9 +10,14 @@ export default function LoginPage() {
       <Card className="auth-card auth-login-card">
         <div className="stack auth-login-stack">
           <div className="auth-brand">
-            <span className="auth-brand-script">Sable</span>
-            <span className="auth-brand-word">DREAMS</span>
-            <span className="auth-brand-tag">DREAM BOLDLY. LIVE SOFTLY.</span>
+            <Image
+              src="/svgg.png"
+              alt="Sable Dreams"
+              width={150}
+              height={54}
+              className="auth-brand-image"
+              priority
+            />
           </div>
           <div className="stack auth-heading auth-login-heading">
             <h2>Welcome Back!</h2>
@@ -31,11 +37,6 @@ export default function LoginPage() {
                 <span className="input-icon">*</span>
                 <Input placeholder="Enter password" type="password" />
                 <span className="input-icon input-icon-right">o</span>
-              </div>
-              <div className="auth-forgot-row">
-                <Link className="auth-link auth-forgot-link" href={ROUTES.forgotPassword}>
-                  Forgot Password?
-                </Link>
               </div>
             </label>
           </div>
