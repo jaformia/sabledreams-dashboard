@@ -277,6 +277,87 @@ p {
   font-weight: 700;
 }
 
+.auth-forgot-card {
+  width: min(100%, 262px);
+  padding: 22px 10px 24px;
+  border-radius: 10px;
+  border: 1px solid #e9dfe3;
+  background: #fefdfd;
+  box-shadow: 0 8px 24px rgba(83, 30, 54, 0.08);
+}
+
+.auth-forgot-stack {
+  gap: 16px;
+}
+
+.auth-forgot-heading {
+  gap: 6px;
+  text-align: center;
+}
+
+.auth-forgot-heading h2 {
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.auth-forgot-heading p {
+  font-size: 10px;
+  color: #34272d;
+}
+
+.auth-forgot-label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #161216;
+}
+
+.auth-forgot-input.input-shell {
+  min-height: 32px;
+  gap: 6px;
+  padding: 0 10px;
+  border-color: #efe6e8;
+  border-radius: 9px;
+  background: #fcf7f8;
+}
+
+.auth-forgot-input .input {
+  font-size: 12px;
+}
+
+.auth-envelope {
+  width: 14px;
+  height: 14px;
+  color: #7d6d74;
+}
+
+.auth-forgot-button.button.primary {
+  min-height: 32px;
+  border-radius: 9px;
+  padding: 8px 16px;
+  background: #52022f;
+  border-color: #52022f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  font-size: 12px;
+  color: #161216;
+}
+
+.auth-back-link-arrow {
+  font-size: 14px;
+  line-height: 1;
+}
+
 .card {
   background: rgba(255, 253, 248, 0.88);
   border: 1px solid rgba(217, 205, 187, 0.9);
