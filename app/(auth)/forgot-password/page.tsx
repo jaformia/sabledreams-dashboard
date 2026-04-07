@@ -1,5 +1,9 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ROUTES } from "@/constants/routes";
@@ -20,6 +24,18 @@ function EnvelopeIcon() {
 }
 
 export default function ForgotPasswordPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+
+  const handleNext = () => {
+    const trimmedEmail = email.trim();
+    if (!trimmedEmail) {
+      return;
+    }
+
+    router.push(`${ROUTES.verifyCode}?email=${encodeURIComponent(trimmedEmail)}`);
+  };
+
   return (
     <main className="auth-page">
       <Card className="auth-card auth-forgot-card">
@@ -44,11 +60,21 @@ export default function ForgotPasswordPage() {
             <span>Email</span>
             <div className="input-shell auth-forgot-input">
               <EnvelopeIcon />
-              <Input placeholder="Enter email" type="email" />
+              <Input
+                placeholder="Enter email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
           </label>
 
-          <button className="button primary auth-forgot-button" type="button">
+          <button
+            className="button primary auth-forgot-button"
+            disabled={!email.trim()}
+            type="button"
+            onClick={handleNext}
+          >
             Next
           </button>
 

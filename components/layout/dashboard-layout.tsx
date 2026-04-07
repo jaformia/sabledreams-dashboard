@@ -1,6 +1,5 @@
 import { Sidebar } from "@/components/layout/sidebar";
 import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 
 export function DashboardLayout({
   children,
@@ -13,7 +12,6 @@ export function DashboardLayout({
       <div className="dashboard-main">
         <Navbar />
         <main className="dashboard-content">{children}</main>
-        <Footer />
       </div>
     </div>
   );

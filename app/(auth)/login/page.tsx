@@ -1,10 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ROUTES } from "@/constants/routes";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const canLogin = email.trim().length > 0 && password.trim().length > 0;
+
   return (
     <main className="auth-page">
       <Card className="auth-card auth-login-card">
@@ -28,21 +38,39 @@ export default function LoginPage() {
               <span>Email address</span>
               <div className="input-shell">
                 <span className="input-icon">@</span>
-                <Input placeholder="Enter email" type="email" />
+                <Input
+                  placeholder="Enter email"
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
               </div>
             </label>
             <label className="auth-field">
               <span>Password</span>
               <div className="input-shell">
                 <span className="input-icon">*</span>
-                <Input placeholder="Enter password" type="password" />
+                <Input
+                  placeholder="Enter password"
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
                 <span className="input-icon input-icon-right">o</span>
               </div>
             </label>
           </div>
-          <Link className="button primary auth-submit auth-login-button" href={ROUTES.dashboard}>
-            Login
+          <Link className="auth-forgot-link" href={ROUTES.forgotPassword}>
+            Forgot password?
           </Link>
+          <button
+            className="button primary auth-submit auth-login-button"
+            disabled={!canLogin}
+            type="button"
+            onClick={() => router.push(ROUTES.dashboard)}
+          >
+            Login
+          </button>
         </div>
       </Card>
     </main>

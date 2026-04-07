@@ -4,6 +4,7 @@ import {
   mkdirSync,
   readdirSync,
   readFileSync,
+  rmSync,
   statSync,
   unlinkSync,
   watch,
@@ -14,9 +15,23 @@ import { join, resolve } from "node:path";
 const mode = process.argv[2] ?? "dev";
 const projectRoot = process.cwd();
 const nextBin = resolve(projectRoot, "node_modules", "next", "dist", "bin", "next");
+const nextDir = resolve(projectRoot, ".next");
 const serverDir = resolve(projectRoot, ".next", "server");
 const chunksDir = join(serverDir, "chunks");
+const appPathsManifest = join(serverDir, "app-paths-manifest.json");
 const numericChunkPattern = /^\d+\.js$/;
+
+function resetBrokenDevCache() {
+  if (mode !== "dev") {
+    return;
+  }
+
+  if (!existsSync(nextDir) || existsSync(appPathsManifest)) {
+    return;
+  }
+
+  rmSync(nextDir, { recursive: true, force: true });
+}
 
 function syncServerChunks() {
   if (!existsSync(chunksDir)) {
@@ -82,6 +97,8 @@ function startChunkWatcher() {
     watcher?.close();
   };
 }
+
+resetBrokenDevCache();
 
 const stopWatching = startChunkWatcher();
 
