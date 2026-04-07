@@ -1,7 +1,4 @@
-import type { Product } from "@/types/product";
+import { mockProducts } from "@/constants/mock-data";
+import { createListService } from "@/services/createMockService";
 
-export const productService = {
-  async list(): Promise<Product[]> {
-    return [];
-  },
-};
+export const productService = createListService(mockProducts);

@@ -1,8 +1,6 @@
+import { PlaceholderState } from "@/components/shared/placeholder-state";
+import { placeholderPages } from "@/constants/mock-data";
+
 export default function ContentPage() {
-  return (
-    <section className="dashboard-placeholder">
-      <h1>Content</h1>
-      <p>Content management screen placeholder.</p>
-    </section>
-  );
+  return <PlaceholderState {...placeholderPages.content} />;
 }

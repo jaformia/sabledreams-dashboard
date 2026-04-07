@@ -1,8 +1,6 @@
+import { PlaceholderState } from "@/components/shared/placeholder-state";
+import { placeholderPages } from "@/constants/mock-data";
+
 export default function SubscriptionsPage() {
-  return (
-    <section className="dashboard-placeholder">
-      <h1>Subscriptions</h1>
-      <p>Subscription management screen placeholder.</p>
-    </section>
-  );
+  return <PlaceholderState {...placeholderPages.subscriptions} />;
 }

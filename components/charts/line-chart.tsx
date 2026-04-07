@@ -1,15 +1,9 @@
-import { Card } from "@/components/ui/card";
+import { ChartCard } from "@/components/charts/chart-card";
 
 export function LineChart() {
   return (
-    <Card>
-      <div className="stack">
-        <div>
-          <span className="eyebrow">Chart</span>
-          <h2>Revenue Trend</h2>
-        </div>
-        <div className="placeholder-chart">Line chart placeholder</div>
-      </div>
-    </Card>
+    <ChartCard eyebrow="Chart" title="Revenue Trend">
+      <div className="placeholder-chart">Line chart placeholder</div>
+    </ChartCard>
   );
 }

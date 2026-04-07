@@ -1,6 +1,6 @@
 type TableProps = {
-  columns: string[];
-  rows: React.ReactNode[][];
+  columns: ReadonlyArray<React.ReactNode>;
+  rows: ReadonlyArray<ReadonlyArray<React.ReactNode>>;
 };
 
 export function Table({ columns, rows }: TableProps) {
@@ -9,8 +9,8 @@ export function Table({ columns, rows }: TableProps) {
       <table className="table">
         <thead>
           <tr>
-            {columns.map((column) => (
-              <th key={column}>{column}</th>
+            {columns.map((column, index) => (
+              <th key={`column-${index}`}>{column}</th>
             ))}
           </tr>
         </thead>

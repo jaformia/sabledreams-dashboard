@@ -1,7 +1,10 @@
-import type { AuthUser } from "@/types/user";
+import { mockAuthUser } from "@/constants/mock-data";
+import { createValueService } from "@/services/createMockService";
+
+const authStateService = createValueService(mockAuthUser);
 
 export const authService = {
-  async login(): Promise<AuthUser | null> {
-    return null;
+  async login() {
+    return authStateService.get();
   },
 };

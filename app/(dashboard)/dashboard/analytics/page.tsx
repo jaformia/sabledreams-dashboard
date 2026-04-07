@@ -1,18 +1,13 @@
-import { Card } from "@/components/ui/card";
+import { PageHeader } from "@/components/shared/page-header";
 import { LineChart } from "@/components/charts/line-chart";
 import { PieChart } from "@/components/charts/pie-chart";
 
 export default function AnalyticsPage() {
   return (
     <section className="page-grid">
-      <div>
-        <span className="eyebrow">Insights</span>
-        <h1>Analytics</h1>
-      </div>
+      <PageHeader eyebrow="Insights" title="Analytics" description="Compare revenue and audience composition at a glance." />
       <LineChart />
-      <Card>
-        <PieChart />
-      </Card>
+      <PieChart />
     </section>
   );
 }
