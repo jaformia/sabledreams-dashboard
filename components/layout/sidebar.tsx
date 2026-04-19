@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ROUTES } from "@/constants/routes";
@@ -117,17 +118,27 @@ export function Sidebar() {
     <aside className="dashboard-sidebar">
       <div className="dashboard-sidebar-top">
         <Link className="dashboard-logo" href={ROUTES.dashboard}>
-          <span className="dashboard-logo-script">Sable</span>
-          <span className="dashboard-logo-word">DREAMS</span>
+          <Image
+            src="/svgg.png"
+            alt="Sable Dreams"
+            width={148}
+            height={48}
+            className="dashboard-logo-image"
+            priority
+          />
         </Link>
 
         <nav className="sidebar-nav">
           {items.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active =
+              item.href === ROUTES.dashboard
+                ? pathname === ROUTES.dashboard
+                : pathname === item.href || pathname.startsWith(`${item.href}/`);
 
             return (
               <Link
                 key={item.href}
+                aria-current={active ? "page" : undefined}
                 className={cn("sidebar-link", active && "active")}
                 href={item.href}
               >

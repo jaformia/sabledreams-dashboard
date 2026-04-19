@@ -33,7 +33,10 @@ export function DashboardOverview() {
       <div className="dashboard-main-grid">
         <article className="dashboard-panel dashboard-growth-panel">
           <div className="dashboard-panel-header">
-            <h2>User Growth</h2>
+            <div>
+              <h2>User Growth</h2>
+              <p className="dashboard-panel-subtitle">Monthly member expansion with a live-style animated view.</p>
+            </div>
             <span className="dashboard-growth-key">
               <i />
               Growth rate
@@ -42,8 +45,12 @@ export function DashboardOverview() {
           <div className="dashboard-chart">
             <div className="dashboard-chart-grid" />
             <div className="dashboard-bars">
-              {dashboardGrowth.map((bar) => (
-                <div key={bar.month} className="dashboard-bar-item">
+              {dashboardGrowth.map((bar, index) => (
+                <div
+                  key={bar.month}
+                  className="dashboard-bar-item"
+                  style={{ animationDelay: `${index * 90}ms` }}
+                >
                   <div className="dashboard-bar-track">
                     <div className="dashboard-bar-fill" style={{ height: `${bar.height}px` }} />
                   </div>
@@ -56,7 +63,10 @@ export function DashboardOverview() {
 
         <article className="dashboard-panel dashboard-mood-panel">
           <div className="dashboard-panel-header">
-            <h2>Mood Distribution</h2>
+            <div>
+              <h2>Mood Distribution</h2>
+              <p className="dashboard-panel-subtitle">Sentiment balance from current daily check-ins.</p>
+            </div>
           </div>
           <div className="dashboard-donut">
             <div className="dashboard-donut-inner">
@@ -117,11 +127,18 @@ export function DashboardOverview() {
 
         <article className="dashboard-panel dashboard-activity-panel">
           <div className="dashboard-panel-header">
-            <h2>Recent Activity</h2>
+            <div>
+              <h2>Recent Activity</h2>
+              <p className="dashboard-panel-subtitle">Latest platform actions and operational signals.</p>
+            </div>
           </div>
           <div className="dashboard-activity-list">
-            {dashboardActivities.map((item) => (
-              <div key={item.title} className="dashboard-activity-item">
+            {dashboardActivities.map((item, index) => (
+              <div
+                key={item.title}
+                className="dashboard-activity-item"
+                style={{ animationDelay: `${index * 110}ms` }}
+              >
                 <span aria-hidden="true" className={`dashboard-activity-dot ${item.tone}`} />
                 <div>
                   <strong>{item.title}</strong>
